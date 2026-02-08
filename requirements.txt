@@ -1,0 +1,25 @@
+# Core
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
+
+# Torch Geometric (TGN dependencies)
+torch-scatter==3.10.0+pt221cu117
+torch-sparse==0.6.20+pt221cu117
+torch-cluster==1.6.1+pt221cu117
+torch-spline-conv==1.2.1+pt221cu117
+torch-geometric==2.3.1
+
+# Data processing
+pandas==2.1.1
+numpy==1.25.1
+scikit-learn==1.3.0
+tqdm==4.66.1
+
+# Optional (GPU utils, logging, etc.)
+matplotlib==3.8.0
+seaborn==0.12.2
+
+# For notebook & Google Colab compatibility
+jupyterlab==4.3.1
+ipython==8.18.1
