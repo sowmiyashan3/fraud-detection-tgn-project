@@ -54,3 +54,33 @@ def build_memory(num_nodes, feature_dim, memory_dim=100, time_dim=100):
         aggregator_module=LastAggregator()
     )
     return memory
+
+def prepare_tgn_data(edges_df, node2id):
+    """
+    Converts edge dataframe into TGN-ready tensors
+    """
+    src = torch.tensor(edges_df['src'].map(node2id).values, dtype=torch.long)
+    dst = torch.tensor(edges_df['dst'].map(node2id).values, dtype=torch.long)
+    t   = torch.tensor(edges_df['timestamp'].values, dtype=torch.long)
+
+    # Message features (edge features)
+    msg_cols = [c for c in edges_df.columns if c.startswith("feat_")]
+    m = torch.tensor(edges_df[msg_cols].values, dtype=torch.float)
+
+    y = torch.tensor(edges_df['label'].values, dtype=torch.float)
+
+    return src, dst, t, m, y
+
+
+
+EMB_DIM = 100  
+NUM_NODES = 1_000_000 
+FEATURE_DIM = 32       
+
+memory = build_memory(
+    num_nodes=NUM_NODES,
+    feature_dim=FEATURE_DIM,
+    memory_dim=EMB_DIM
+)
+
+classifier = AttentionClassifier(EMB_DIM)

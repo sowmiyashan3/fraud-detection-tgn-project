@@ -30,3 +30,16 @@ FEATURE_COLS = [
     'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C_sum', 'C_mean',
     'D1', 'D2', 'D3', 'D4', 'D5', 'D1_D2_ratio', 'D3_D4_ratio'
 ]
+
+# Google & Pinecone API keys
+GOOGLE_API_KEY = "api-key"
+PINECONE_API_KEY = "api-key"
+
+# Neo4j credentials
+NEO4J_URI = "url"
+NEO4J_USER = "neo4j"
+NEO4J_PASSWORD = "password"
+
+# Environment variables
+os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
